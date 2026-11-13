@@ -1,11 +1,16 @@
 # Carson3245 — Portfólio
 
-Portfólio estático em português com projetos em Android, Unity, Roblox Studio e Java.
+Portfólio estático em português. Publicado em https://carson3245.github.io.
 
-## GitHub Pages
+## Publicação
 
-A página usa index.html na raiz e os vídeos/capas em assets/. Configure o GitHub Pages para publicar a branch main pela pasta / (root).
+O GitHub Pages publica `index.html` da branch `main`, pasta raiz.
 
-## Prévia local
+## Conteúdo
 
-Sirva esta pasta com um servidor estático. Os vídeos usam MP4 otimizado e carregam somente quando o visitante der play.
+- Capturas do Saída Fácil e do Checklist Fácil usam telas de demonstração e dados fictícios.
+- As gravações do LFM Engine Audio Lab foram recortadas para mostrar a janela da ferramenta.
+- A gravação do LFM Dynamics mostra a área de jogo, sem as barras do editor e do Windows.
+- Os vídeos usam `preload="none"` para não carregar até o visitante iniciar a reprodução.
+
+Para prévia local, sirva esta pasta com um servidor HTTP estático.
