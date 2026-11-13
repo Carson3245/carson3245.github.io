@@ -97,25 +97,32 @@
       font: bold 16px/1.3 Arial, sans-serif;
     }
 
-    .app-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .app-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
     .app-card {
-      display: grid;
-      grid-template-columns: 112px minmax(0, 1fr);
-      align-items: start;
-      gap: 12px;
-      padding: 10px;
+      min-width: 0;
+      padding: 12px;
       border: 1px solid #999;
       background: #fafafa;
     }
-    .app-shot { margin: 0; }
+    .app-summary { margin-bottom: 12px; }
+    .app-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .app-shot, .project-shot {
+      min-width: 0;
+      margin: 0;
+      padding: 6px;
+      border: 1px solid #aaa;
+      background: #f1f1f1;
+    }
+    .app-shot a, .project-shot a { display: block; background: #e8e8e8; text-align: center; }
     .app-shot img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 560px;
+      object-fit: contain;
       border: 1px solid #aaa;
       background: #eee;
     }
-    .app-shot figcaption { margin-top: 5px; color: #555; font-size: 10px; line-height: 1.35; }
+    .app-shot figcaption, .project-shot figcaption { padding-top: 5px; color: #555; font-size: 10px; line-height: 1.35; }
     .app-card h3, .project-card h3 { margin: 0 0 6px; color: #21495f; font: bold 17px/1.25 Arial, sans-serif; }
     .app-card p, .project-card p { margin: 0 0 8px; font-size: 12px; }
     .tech { color: #555; font-size: 11px !important; }
@@ -127,6 +134,15 @@
       background: #fafafa;
     }
     .project-card p:last-child { margin-bottom: 0; }
+    .project-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+    .project-shot img {
+      display: block;
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      border: 1px solid #aaa;
+      background: #eee;
+    }
     .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .video-card {
       min-width: 0;
@@ -177,14 +193,18 @@
       .sidebar { order: 2; border-right: 0; border-top: 1px solid #b4b4b4; }
       .sidebar-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
       .sidebox { margin-bottom: 0; }
-      .app-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 520px) {
       .site-header { padding: 15px 16px; }
       .site-header h1 { font-size: 26px; }
       .nav { gap: 7px 14px; padding-inline: 14px; }
       .video-grid { grid-template-columns: 1fr; }
-      .app-card { grid-template-columns: 96px minmax(0, 1fr); gap: 10px; padding: 8px; }
+      .app-card { padding: 8px; }
+      .app-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+      .app-shot { padding: 4px; }
+      .app-shot img { height: 370px; }
+      .project-gallery { grid-template-columns: 1fr; gap: 8px; }
+      .project-shot img { height: 280px; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
@@ -243,26 +263,46 @@
           <h3 class="subhead">Aplicativos</h3>
           <div class="app-grid">
             <article class="app-card" id="saida-facil">
-              <figure class="app-shot">
-                <img src="assets/saida-facil-demo.png" alt="Tela inicial do Saída Fácil com dados de demonstração" width="390" height="844" loading="lazy" decoding="async">
-                <figcaption>Captura de demonstração<br>Dados fictícios</figcaption>
-              </figure>
-              <div>
+              <div class="app-summary">
                 <h3>Saída Fácil</h3>
                 <p>App Android para consultar o estoque, registrar saídas e acompanhar contagens, compras, produção e histórico.</p>
                 <p class="tech">Android · WebView · API local</p>
               </div>
+              <div class="app-gallery" aria-label="Telas do Saída Fácil">
+                <figure class="app-shot">
+                  <a href="assets/saida-facil-demo.png" target="_blank" rel="noreferrer"><img src="assets/saida-facil-demo.png" alt="Tela inicial do Saída Fácil" width="390" height="844" loading="lazy" decoding="async"></a>
+                  <figcaption>Início · dados fictícios</figcaption>
+                </figure>
+                <figure class="app-shot">
+                  <a href="assets/saida-movimentacao-demo.png" target="_blank" rel="noreferrer"><img src="assets/saida-movimentacao-demo.png" alt="Tela de movimentação e saída de produtos" width="320" height="844" loading="lazy" decoding="async"></a>
+                  <figcaption>Movimentação · dados fictícios</figcaption>
+                </figure>
+                <figure class="app-shot">
+                  <a href="assets/saida-estoque-demo.png" target="_blank" rel="noreferrer"><img src="assets/saida-estoque-demo.png" alt="Tela de estoque com saldos e limites" width="320" height="844" loading="lazy" decoding="async"></a>
+                  <figcaption>Estoque · dados fictícios</figcaption>
+                </figure>
+              </div>
             </article>
 
             <article class="app-card" id="checklist-facil">
-              <figure class="app-shot">
-                <img src="assets/checklist-facil-demo.png" alt="Tela inicial do Checklist Fácil com dados de demonstração" width="390" height="844" loading="lazy" decoding="async">
-                <figcaption>Captura de demonstração<br>Dados fictícios</figcaption>
-              </figure>
-              <div>
+              <div class="app-summary">
                 <h3>Checklist Fácil</h3>
                 <p>App Android para revisar a produção do dia, conferir solicitações e registrar sobras junto ao fluxo de estoque.</p>
                 <p class="tech">Android · Checklist · Estoque</p>
+              </div>
+              <div class="app-gallery" aria-label="Telas do Checklist Fácil">
+                <figure class="app-shot">
+                  <a href="assets/checklist-facil-demo.png" target="_blank" rel="noreferrer"><img src="assets/checklist-facil-demo.png" alt="Tela inicial do Checklist Fácil" width="390" height="844" loading="lazy" decoding="async"></a>
+                  <figcaption>Início · dados fictícios</figcaption>
+                </figure>
+                <figure class="app-shot">
+                  <a href="assets/checklist-producao-demo.png" target="_blank" rel="noreferrer"><img src="assets/checklist-producao-demo.png" alt="Tela da expectativa de vendas e produção" width="320" height="844" loading="lazy" decoding="async"></a>
+                  <figcaption>Expectativa · dados fictícios</figcaption>
+                </figure>
+                <figure class="app-shot">
+                  <a href="assets/checklist-sobras-demo.png" target="_blank" rel="noreferrer"><img src="assets/checklist-sobras-demo.png" alt="Tela de registro de sobras e produção" width="320" height="844" loading="lazy" decoding="async"></a>
+                  <figcaption>Sobras e produção · dados fictícios</figcaption>
+                </figure>
               </div>
             </article>
           </div>
@@ -277,6 +317,17 @@
             <h3>Casa de Leilões</h3>
             <p>Projeto em Java para cadastrar e consultar itens de um leilão, feito como atividade UC11.</p>
             <p><a href="https://github.com/Carson3245/UC11" target="_blank" rel="noreferrer">Ver repositório no GitHub</a></p>
+            <p class="tech">Capturas do aplicativo · registros de demonstração</p>
+            <div class="project-gallery" aria-label="Telas da Casa de Leilões">
+              <figure class="project-shot">
+                <a href="assets/casa-cadastro-demo.png" target="_blank" rel="noreferrer"><img src="assets/casa-cadastro-demo.png" alt="Formulário Java de cadastro de produto, preenchido para demonstração" width="504" height="420" loading="lazy" decoding="async"></a>
+                <figcaption>Cadastro de produto · preenchimento ilustrativo</figcaption>
+              </figure>
+              <figure class="project-shot">
+                <a href="assets/casa-listagem-demo.png" target="_blank" rel="noreferrer"><img src="assets/casa-listagem-demo.png" alt="Tabela Java com produtos de demonstração na Casa de Leilões" width="664" height="412" loading="lazy" decoding="async"></a>
+                <figcaption>Listagem · dados fictícios</figcaption>
+              </figure>
+            </div>
           </article>
         </section>
 
