@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#294f65">
+  <meta name="theme-color" content="#11104b">
   <meta name="description" content="Portfólio pessoal de Philipe Flores: Saída Fácil, Checklist Fácil, LFM Dynamics e outros projetos.">
   <meta property="og:title" content="Philipe Flores — Portfólio">
   <meta property="og:description" content="Aplicativos, simulação de veículos e projetos em Java.">
@@ -12,160 +12,269 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #222;
-      --blue: #294f65;
-      --line: #929292;
-      --soft: #ededed;
-      --outer: #d7d7d7;
+      --ink: #101020;
+      --navy: #11104b;
+      --deep: #08051f;
+      --pink: #f127c7;
+      --cyan: #00edff;
+      --lime: #d8ff4f;
+      --silver: #c0c0c0;
+      --paper: #ededf5;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--outer);
+      min-height: 100vh;
+      background-color: #08051f;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(0,237,255,.8) 1px, transparent 1.5px),
+        linear-gradient(135deg, #08051f, #171044 55%, #08051f);
+      background-size: 47px 47px, 83px 83px, cover;
+      background-position: 0 0, 23px 17px, center;
       color: var(--ink);
-      font: 14px/1.5 Verdana, Arial, sans-serif;
+      font: 15px/1.5 "Courier New", Courier, monospace;
     }
-    a { color: #003399; text-decoration: underline; }
+    a { color: #0000ee; text-decoration: underline; font-weight: bold; }
     a:visited { color: #551a8b; }
-    a:hover { color: #a00000; }
-    a:focus-visible { outline: 2px dotted #a00000; outline-offset: 3px; }
+    a:hover { color: #d0009a; }
+    a:focus-visible { outline: 3px dotted #ff00d4; outline-offset: 3px; }
 
     .page {
-      width: min(100% - 28px, 1000px);
-      margin: 24px auto;
-      background: #fff;
-      border: 1px solid #777;
-      box-shadow: 0 2px 5px #aaa;
+      width: min(calc(100% - 24px), 1180px);
+      margin: 18px auto;
+      background: var(--silver);
+      border: 4px ridge #fff;
+      box-shadow: 8px 8px 0 rgba(0,0,0,.65), 0 0 32px rgba(0,237,255,.25);
     }
     .site-header {
-      padding: 18px 22px;
+      padding: 22px 24px;
       color: #fff;
-      background: var(--blue);
-      border-bottom: 4px solid #c9ad63;
+      background: linear-gradient(110deg, #05044a, #241064 55%, #4f0759);
+      border-bottom: 5px ridge var(--pink);
+    }
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
     .site-header h1 {
       margin: 0;
-      font: bold 30px/1.15 Georgia, "Times New Roman", serif;
+      color: var(--lime);
+      font: 900 clamp(31px, 5vw, 52px)/1 "Courier New", Courier, monospace;
+      letter-spacing: -2px;
+      text-shadow: 3px 3px 0 #ed12bb, 6px 6px 0 #08051f;
     }
-    .site-header p { margin: 4px 0 0; color: #e8eef1; }
+    .site-kicker { margin: 0 0 7px; color: var(--cyan); font-size: 12px; font-weight: bold; letter-spacing: 2px; }
+    .site-subtitle { margin: 12px 0 0; color: #fff; font-size: 14px; }
+    .web-badge {
+      flex: 0 0 auto;
+      padding: 9px 12px;
+      border: 3px ridge #fff;
+      background: var(--silver);
+      color: #071047;
+      font-size: 11px;
+      font-weight: bold;
+      line-height: 1.3;
+      text-align: center;
+      box-shadow: 4px 4px 0 #050329;
+    }
+    .web-badge strong { color: #c90086; font-size: 15px; }
+    .ticker {
+      overflow: hidden;
+      padding: 5px 0;
+      border-bottom: 3px ridge #fff;
+      background: #050329;
+      color: var(--lime);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .ticker span { display: block; width: max-content; animation: ticker 28s linear infinite; }
+    @keyframes ticker { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
     .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 22px;
-      padding: 8px 18px;
-      background: #e9e9e9;
-      border-bottom: 1px solid #888;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #a6a6b7;
+      border-bottom: 3px ridge #fff;
     }
-    .nav a { font-size: 13px; }
+    .nav a {
+      padding: 5px 9px;
+      border: 2px outset #fff;
+      background: #d8d8df;
+      color: #0000b8;
+      font-size: 12px;
+      text-decoration: none;
+      box-shadow: 1px 1px 0 #555;
+    }
+    .nav a:hover { border-style: inset; background: var(--lime); color: #12013f; }
 
-    .layout { display: grid; grid-template-columns: 190px minmax(0, 1fr); }
+    .layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); }
     .sidebar {
-      padding: 14px;
-      background: #f1f1f1;
-      border-right: 1px solid #b4b4b4;
+      padding: 12px;
+      background: #a9a9b6;
+      border-right: 3px ridge #fff;
     }
     .sidebox {
-      margin: 0 0 14px;
-      border: 1px solid #aaa;
-      background: #fff;
+      margin: 0 0 12px;
+      border: 3px ridge #fff;
+      background: var(--paper);
+      box-shadow: 3px 3px 0 #534079;
     }
     .sidebox h2 {
       margin: 0;
-      padding: 5px 8px;
-      font: bold 13px/1.4 Arial, sans-serif;
-      background: #e5e5e5;
-      border-bottom: 1px solid #aaa;
+      padding: 5px 7px;
+      color: var(--lime);
+      font: bold 13px/1.4 "Courier New", Courier, monospace;
+      background: #090852;
+      border-bottom: 2px solid var(--pink);
+      text-transform: uppercase;
     }
     .sidebox ul { margin: 8px 0; padding-left: 25px; }
-    .sidebox li { margin: 3px 0; }
+    .sidebox li { margin: 5px 0; }
     .sidebox p { margin: 8px; font-size: 12px; }
-    .content { min-width: 0; padding: 20px 22px; }
-    .welcome, .section { padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #aaa; }
+    .content { min-width: 0; padding: 20px 22px; background: #d1d1d9; }
+    .welcome, .section { padding-bottom: 20px; margin-bottom: 20px; border-bottom: 3px ridge #fff; }
+    .welcome {
+      padding: 16px;
+      border: 3px ridge #fff;
+      background: var(--navy);
+      color: #fff;
+      box-shadow: 5px 5px 0 var(--pink);
+    }
     .welcome h2, .section > h2 {
       margin: 0 0 8px;
-      color: #21495f;
-      font: bold 22px/1.25 Georgia, "Times New Roman", serif;
+      color: var(--lime);
+      font: bold 22px/1.25 "Courier New", Courier, monospace;
+      text-transform: uppercase;
     }
     .welcome p, .section-intro { max-width: 680px; margin: 0; }
+    .section-intro { margin-bottom: 10px; }
+    .section > h2 {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 3px outset #fff;
+      background: #080650;
+      box-shadow: 3px 3px 0 var(--pink);
+    }
     .subhead {
       margin: 16px 0 9px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid #bbb;
-      color: #333;
-      font: bold 16px/1.3 Arial, sans-serif;
+      padding: 5px 8px;
+      border: 2px inset #fff;
+      background: #d6d6dd;
+      color: #080650;
+      font: bold 16px/1.3 "Courier New", Courier, monospace;
+      text-transform: uppercase;
     }
 
     .app-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
     .app-card {
       min-width: 0;
       padding: 12px;
-      border: 1px solid #999;
-      background: #fafafa;
+      border: 4px ridge #fff;
+      background: #11104b;
+      color: #fff;
+      box-shadow: 6px 6px 0 #e31dbf;
     }
-    .app-summary { margin-bottom: 12px; }
-    .app-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .app-summary {
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      border: 3px outset #fff;
+      background: #d9ff5b;
+      color: #111;
+    }
+    .app-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 9px; border: 3px inset #fff; background: #07052c; }
     .app-shot, .project-shot {
       min-width: 0;
       margin: 0;
-      padding: 6px;
-      border: 1px solid #aaa;
-      background: #f1f1f1;
+      padding: 7px;
+      border: 3px ridge var(--cyan);
+      background: linear-gradient(135deg, #211262, #080526);
     }
-    .app-shot a, .project-shot a { display: block; background: #e8e8e8; text-align: center; }
+    .app-shot a, .project-shot a { display: flex; min-height: 100%; justify-content: center; align-items: center; background: #171044; text-align: center; }
     .app-shot img {
       display: block;
-      width: 100%;
-      height: 560px;
+      width: auto;
+      max-width: 100%;
+      height: 420px;
       object-fit: contain;
-      border: 1px solid #aaa;
-      background: #eee;
+      border: 3px ridge #fff;
+      background: #08051f;
+      box-shadow: 4px 4px 0 var(--pink);
+      transition: transform .16s ease, box-shadow .16s ease;
     }
-    .app-card h3, .project-card h3 { margin: 0 0 6px; color: #21495f; font: bold 17px/1.25 Arial, sans-serif; }
-    .app-card p, .project-card p { margin: 0 0 8px; font-size: 12px; }
-    .tech { color: #555; font-size: 11px !important; }
+    .app-shot:hover img { transform: translateY(-4px) rotate(-1deg); box-shadow: 7px 8px 0 var(--pink); }
+    .app-card h3, .project-card h3 { margin: 0 0 7px; color: #080650; font: bold 24px/1.15 "Courier New", Courier, monospace; text-transform: uppercase; }
+    .app-card p, .project-card p { margin: 0 0 8px; font-size: 13px; }
+    .app-card .tech, .project-card .tech { display: inline-block; padding: 3px 6px; background: #08051f; color: var(--cyan); font-size: 11px !important; font-weight: bold; }
 
     .project-card {
       margin-top: 12px;
-      padding: 12px;
-      border: 1px solid #999;
-      background: #fafafa;
+      padding: 13px;
+      border: 4px ridge #fff;
+      background: var(--paper);
+      box-shadow: 5px 5px 0 #26065f;
     }
     .project-card p:last-child { margin-bottom: 0; }
-    .project-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+    .project-card.featured {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      align-items: center;
+      gap: 16px;
+      border-color: var(--pink);
+      background: linear-gradient(120deg, #11104b, #1c0a48);
+      color: #fff;
+      box-shadow: 7px 7px 0 var(--cyan);
+    }
+    .project-card.featured h3 { color: var(--lime); font-size: 29px; text-shadow: 2px 2px #dc00ad; }
+    .project-card.featured a { color: var(--cyan); }
+    .project-card.featured a:visited { color: var(--lime); }
+    .project-card.featured a:hover { color: #ff6ae2; }
+    .project-label { display: inline-block; margin-bottom: 6px; padding: 3px 6px; border: 2px outset #fff; background: var(--pink); color: #10023e; font-size: 10px; font-weight: bold; letter-spacing: 1px; }
+    .project-card.featured .tech { background: #050329; }
+    .featured-media { min-width: 0; padding: 6px; border: 4px ridge #fff; background: #050329; box-shadow: 5px 5px 0 var(--pink); }
+    .featured-media video { display: block; width: 100%; height: auto; background: #000; }
+    .project-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 12px; padding: 8px; border: 3px inset #fff; background: #080650; }
     .project-shot img {
       display: block;
       width: 100%;
-      height: 320px;
+      height: 270px;
       object-fit: contain;
-      border: 1px solid #aaa;
-      background: #eee;
+      border: 3px ridge #fff;
+      background: #08051f;
     }
     .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .video-card {
       min-width: 0;
       margin: 0;
       padding: 8px;
-      border: 1px solid #999;
-      background: #f4f4f4;
+      border: 4px ridge #fff;
+      background: #11104b;
+      box-shadow: 4px 4px 0 var(--pink);
     }
     .video-card video {
       display: block;
       width: 100%;
       height: auto;
-      background: #111;
-      border: 1px solid #666;
+      background: #000;
+      border: 3px ridge var(--cyan);
     }
     details.more-videos { margin-top: 12px; }
     details.more-videos summary {
       display: list-item;
-      padding: 7px 9px;
-      border: 1px solid #999;
-      background: #eee;
+      padding: 8px 10px;
+      border: 3px outset #fff;
+      background: #d8ff4f;
       cursor: pointer;
-      color: #003399;
+      color: #0000aa;
       text-decoration: underline;
+      font-weight: bold;
     }
     details.more-videos[open] summary { margin-bottom: 12px; }
     .about p { margin: 0; }
@@ -176,41 +285,62 @@
       gap: 12px;
       flex-wrap: wrap;
       padding: 10px 16px;
-      background: #e9e9e9;
-      border-top: 1px solid #888;
-      color: #444;
-      font-size: 11px;
+      background: #080650;
+      border-top: 4px ridge var(--pink);
+      color: #fff;
+      font-size: 12px;
     }
+    footer a { color: var(--cyan); }
+    footer a:visited { color: var(--lime); }
 
-    @media (max-width: 780px) {
+    @media (max-width: 820px) {
       .page { width: 100%; margin: 0 auto; border-width: 0; box-shadow: none; }
       .layout { display: flex; flex-direction: column; }
       .content { order: 1; padding: 18px 16px; }
-      .sidebar { order: 2; border-right: 0; border-top: 1px solid #b4b4b4; }
+      .sidebar { order: 2; border-right: 0; border-top: 3px ridge #fff; }
       .sidebar-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
       .sidebox { margin-bottom: 0; }
     }
-    @media (max-width: 520px) {
-      .site-header { padding: 15px 16px; }
-      .site-header h1 { font-size: 26px; }
-      .nav { gap: 7px 14px; padding-inline: 14px; }
+    @media (max-width: 560px) {
+      .site-header { padding: 17px 15px; }
+      .masthead { align-items: flex-start; }
+      .site-header h1 { font-size: clamp(24px, 8vw, 31px); letter-spacing: -1px; }
+      .web-badge { padding: 7px; font-size: 9px; }
+      .web-badge strong { font-size: 12px; }
+      .nav { gap: 6px; padding: 8px; }
+      .nav a { padding: 5px 7px; font-size: 11px; }
+      .content { padding: 14px 10px; }
       .video-grid { grid-template-columns: 1fr; }
       .app-card { padding: 8px; }
       .app-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
       .app-shot { padding: 4px; }
-      .app-shot img { height: 370px; }
+      .app-shot img { height: 330px; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .project-card.featured h3 { font-size: 25px; }
       .project-gallery { grid-template-columns: 1fr; gap: 8px; }
-      .project-shot img { height: 280px; }
+      .project-shot img { height: 260px; }
     }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ticker span { animation: none; transform: none; }
+      .app-shot img { transition: none; }
+    }
   </style>
 </head>
 <body>
   <div class="page" id="top">
     <header class="site-header">
-      <h1>Philipe Flores</h1>
-      <p>Portfólio pessoal · aplicativos e projetos</p>
+      <div class="masthead">
+        <div>
+          <p class="site-kicker">HOME PAGE · PHILIPE FLORES</p>
+          <h1>Philipe Flores</h1>
+          <p class="site-subtitle">Projetos, experiências e coisas que construí.</p>
+        </div>
+        <div class="web-badge" aria-label="Portfólio online">PORTFÓLIO<br><strong>ONLINE</strong></div>
+      </div>
     </header>
+
+    <div class="ticker" aria-hidden="true"><span>★ SAÍDA FÁCIL ★ CHECKLIST FÁCIL ★ LFM DYNAMICS ★ CASA DE LEILÕES ★ SAÍDA FÁCIL ★ CHECKLIST FÁCIL ★ LFM DYNAMICS ★</span></div>
 
     <nav class="nav" aria-label="Navegação principal">
       <a href="#projetos">Projetos</a>
@@ -239,24 +369,36 @@
             <h2>Sobre mim</h2>
             <p>Gosto de criar aplicativos úteis e projetos de simulação.</p>
           </section>
-          <section class="sidebox">
-            <h2>Atualização</h2>
-            <p>13/11/2026</p>
-          </section>
         </div>
       </aside>
 
       <main class="content" id="conteudo">
         <section class="welcome">
           <h2>Oi, eu sou Philipe Flores.</h2>
-          <p>Aqui estão alguns projetos que desenvolvi: aplicativos para organizar o trabalho, ferramentas de simulação e um projeto em Java.</p>
+          <p>Este é meu canto na internet: aplicativos úteis, simulação de veículos e projetos que nasceram da vontade de construir coisas.</p>
         </section>
 
         <section class="section" id="projetos" aria-labelledby="projects-title">
           <h2 id="projects-title">Projetos</h2>
-          <p class="section-intro">Uma seleção do que venho construindo.</p>
+          <p class="section-intro">Escolha uma janela e explore.</p>
 
-          <h3 class="subhead">Aplicativos</h3>
+          <article class="project-card featured" id="lfm-dynamics">
+            <div class="project-copy">
+              <span class="project-label">PROJETO EM DESTAQUE</span>
+              <h3>LFM Dynamics</h3>
+              <p>Simulação de veículos em Unity, com física de direção, tráfego por waypoints e integração de áudio com o EngineSim.</p>
+              <p class="tech">Unity · C# · EngineSim</p>
+              <p><a href="https://github.com/Carson3245/LFMDynamics" target="_blank" rel="noreferrer">Repositório privado no GitHub</a></p>
+            </div>
+            <div class="featured-media">
+              <video controls playsinline preload="none" poster="assets/lfm-dynamics-city.jpg" width="1280" height="580" aria-label="Demonstração do LFM Dynamics na cidade">
+                <source src="assets/lfm-dynamics-city.mp4" type="video/mp4">
+                Seu navegador não reproduz vídeo HTML5.
+              </video>
+            </div>
+          </article>
+
+          <h3 class="subhead">Aplicativos · 02 projetos</h3>
           <div class="app-grid">
             <article class="app-card" id="saida-facil">
               <div class="app-summary">
@@ -297,12 +439,6 @@
             </article>
           </div>
 
-          <article class="project-card" id="lfm-dynamics">
-            <h3>LFM Dynamics</h3>
-            <p>Simulação de veículos em Unity, com física de direção, tráfego por waypoints e integração de áudio com o EngineSim.</p>
-            <p><a href="https://github.com/Carson3245/LFMDynamics" target="_blank" rel="noreferrer">Repositório privado no GitHub</a></p>
-          </article>
-
           <article class="project-card" id="casa-leiloes">
             <h3>Casa de Leilões</h3>
             <p>Projeto em Java para cadastrar e consultar itens de um leilão, feito como atividade UC11.</p>
@@ -319,16 +455,9 @@
         </section>
 
         <section class="section" id="videos" aria-labelledby="videos-title">
-          <h2 id="videos-title">Vídeos dos projetos</h2>
+          <h2 id="videos-title">Mais demonstrações</h2>
 
           <div class="video-grid" style="margin-top:12px">
-            <figure class="video-card">
-              <video controls playsinline preload="none" poster="assets/lfm-dynamics-city.jpg" width="1280" height="580" aria-label="Demonstração do LFM Dynamics na cidade">
-                <source src="assets/lfm-dynamics-city.mp4" type="video/mp4">
-                Seu navegador não reproduz vídeo HTML5.
-              </video>
-            </figure>
-
             <figure class="video-card">
               <video controls playsinline preload="none" poster="assets/lfm-audio-lab-controls.jpg" width="624" height="444" aria-label="Controles do LFM Engine Audio Lab">
                 <source src="assets/lfm-audio-lab-controls-audio.mp4" type="video/mp4">
